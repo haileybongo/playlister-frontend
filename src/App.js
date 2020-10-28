@@ -1,19 +1,25 @@
 import React from 'react';
-
+import {fetchPlaylists} from './actions/fetchPlaylists'
+import { connect } from 'react-redux'
+import PlaylistsContainer from './containers/PlaylistsContainer'
+import SongsContainer from './containers/SongsContainer'
+import SearchContainer from './containers/SearchContainer'
 
 class App extends React.Component {
 
   componentDidMount () {
-    fetch('http://localhost:3000/api/playlists/1')
-    .then(response => response.json())
-    .then(data => console.log(data))
+      this.props.fetchPlaylists()
   }
 
   render(){
   return (
     <div className="App">
+      <PlaylistsContainer />
+      <SearchContainer />
     </div>
   );}
 }
 
-export default App;
+export default connect (null, { fetchPlaylists })(App);
+
+
