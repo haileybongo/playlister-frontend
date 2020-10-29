@@ -3,7 +3,8 @@ import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
     playlists: playlistReducer,
-    songs: songsReducer
+    songs: songsReducer,
+
   });
    
   export default rootReducer;
@@ -68,6 +69,20 @@ function songsReducer(state = {loading: false }, action)  {
                 loading: false
             }
         }
+    }
+
+    const spotifyReducer = (state = []) => {
+
+        let SpotifyWebApi = require('spotify-web-api-node');
+
+
+        let spotifyApi = new SpotifyWebApi({
+        clientId: 'b41ae126e56548848ff926c613d59933',
+        clientSecret: '3c9a5b40395d451395f25e0f2008c4ee',
+    });
+
+    return state = [...spotifyApi]
+
     }
 
 
