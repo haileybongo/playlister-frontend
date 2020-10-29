@@ -2,8 +2,12 @@ export const searchSongs = (data) => {
     return (dispatch) => {
     let request = require('request'); 
 
-        let client_id =  'b41ae126e56548848ff926c613d59933'
-        let client_secret =  '3c9a5b40395d451395f25e0f2008c4ee'
+        
+
+        let client_id =  process.env.REACT_APP_CLIENT_ID
+        let client_secret =  process.env.REACT_APP_CLIENT_SECRET
+
+        debugger
 
         let authOptions = {
         url: 'https://accounts.spotify.com/api/token',

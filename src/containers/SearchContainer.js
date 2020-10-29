@@ -7,9 +7,9 @@ import { searchSongs } from '../actions/searchSongs'
 
 class SearchContainer extends React.Component {
 
-    // componentDidMount () {
-    //     this.props.searchSongs()
-    // }
+     componentDidMount () {
+         this.props.searchSongs()
+     }
  
     render() {
 
