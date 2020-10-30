@@ -14,11 +14,11 @@ class SearchContainer extends React.Component {
 
  
     render() {
-
+           
         return (
             <div>
                 <SearchInput token={this.props.search.token} getToken={getToken}/>
-                <SearchResults />
+                <SearchResults results={this.props.search.results}/>
             </div>
         )
     }

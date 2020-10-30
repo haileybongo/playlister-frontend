@@ -60,14 +60,14 @@ function songsReducer(state = {loading: false }, action)  {
 
   function searchReducer(state = {loading: false }, action)  {
     switch (action.type) {
-        case 'LOADING_RESULTS':
-            return {
-            state,
-            loading: true}
+        // case 'LOADING_RESULTS':
+        //     return {
+        //     state,
+        //     loading: true}
         case 'FETCH_RESULTS':
    
             return {
-                state: action.results.data,
+                results: action.results.data,
                 loading: false
             }
         case 'ADD_TOKEN':

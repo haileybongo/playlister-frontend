@@ -5,19 +5,19 @@ export const searchSongs = (data= {}, token) =>{
 
     let url = "https://api.spotify.com/v1/recommendations?market=US&seed_genres=" + data.selectedGenres
     
-    if(data.acousticness != ''){
+    if(data.acousticness !== ''){
         url = url.concat("&target_acousticness=" + data.acousticness)
     }
 
-    if(data.danceability != ''){
+    if(data.danceability !== ''){
         url = url.concat("&target_danceability=" + data.danceability)
     }
 
-    if(data.energy != ''){
+    if(data.energy !== ''){
         url = url.concat("&target_energy=" + data.energy)
     }
 
-    if(data.popularity != ''){
+    if(data.popularity !== ''){
         url = url.concat("&target_popularity=" + data.popularity)
     }
 

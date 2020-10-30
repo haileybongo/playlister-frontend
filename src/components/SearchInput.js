@@ -303,10 +303,10 @@ class SearchInput extends React.Component {
             "world-music"
           ],
             selectedGenres: [],
-            acousticness: [],
-            danceability: [],
-            energy: [],
-            popularity: []
+            acousticness: '',
+            danceability: '',
+            energy: '',
+            popularity: ''
         });
       }
 
