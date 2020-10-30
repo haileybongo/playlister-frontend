@@ -11,7 +11,7 @@ export const addPlaylist = (data) => {
         body: JSON.stringify(data)
       })
       .then(response => response.json())
-      .then(playlist => dispatch({type: 'ADD_PLAYLIST', payload: playlist}) )
+      .then(data => dispatch({type: 'ADD_PLAYLIST', playlists: data}) )
     }
   
   }

@@ -134,10 +134,10 @@ class SearchInput extends React.Component {
         "world-music"
       ],
         selectedGenres: [],
-        acousticness: [],
-        danceability: [],
-        energy: [],
-        popularity: []
+        acousticness: '',
+        danceability: '',
+        energy: '',
+        popularity: ''
 
       }
 
@@ -159,6 +159,12 @@ class SearchInput extends React.Component {
 
       handleChange = (event) => {
         this.setState({
+          [event.target.name]: (event.target.value / 10)
+        })
+      }
+
+      handlePopularity = (event) => {
+        this.setState({
           [event.target.name]: event.target.value
         })
       }
@@ -166,7 +172,6 @@ class SearchInput extends React.Component {
     
       handleOnSubmit(event) {
         event.preventDefault();
-        debugger
         this.props.searchSongs(this.state, this.props.token);
         this.setState({
             value: [],
@@ -328,7 +333,7 @@ class SearchInput extends React.Component {
             <br/>
             <br/>
             <label> Popularity Level (1-10) </label>
-            <input type="text" value ={this.state.popularity} name="popularity" onChange={(event) => this.handleChange(event)}/>
+            <input type="text" value ={this.state.popularity} name="popularity" onChange={(event) => this.handlePopularity(event)}/>
 
             <form onSubmit={(event) => this.handleOnSubmit(event)}>
 

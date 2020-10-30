@@ -1,4 +1,4 @@
-import uuid from 'react-uuid';
+
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
 
   });
    
-  export default rootReducer;
+export default rootReducer;
 
 function playlistReducer(state = {loading: false }, action)  {
     switch (action.type) {
@@ -21,23 +21,18 @@ function playlistReducer(state = {loading: false }, action)  {
                 state: action.playlists.data,
                 loading: false
             }
-
-      case 'ADD_PLAYLIST':
-          debugger
-        return state.concat({
-            name: action.payload.data.attributes.name,
-            description:  action.payload.data.attributes.description,
-            id: action.payload.data.attributes.id
-            })
-
-
-    case 'DELETE_PLAYLIST':
-        const idx = state.findIndex(restaurant => restaurant.id === action.id);
-        return [...state.slice(0,idx), ...state.slice(idx+1)]  
-      default:
-        return state;
-    }
-  }
+        case 'ADD_PLAYLIST':
+            return {
+                state: action.playlists.data,
+                loading: false
+            }
+        case 'DELETE_PLAYLIST':
+            const idx = state.findIndex(playlist => playlist.id === action.id);
+            return [...state.slice(0,idx), ...state.slice(idx+1)]  
+        default:
+            return state;
+            }
+        }
 
 function songsReducer(state = {loading: false }, action)  {
     switch (action.type) {
@@ -79,6 +74,11 @@ function songsReducer(state = {loading: false }, action)  {
             return{
                 ...state,
                 token: action.payload
+               }
+        case 'ADD_RESULTS':
+            return{
+                ...state,
+                results: action.payload
             }
               
       default:
@@ -86,19 +86,6 @@ function songsReducer(state = {loading: false }, action)  {
         }
     }
 
-    const spotifyReducer = (state = []) => {
-
-        let SpotifyWebApi = require('spotify-web-api-node');
-
-
-        let spotifyApi = new SpotifyWebApi({
-        clientId: 'b41ae126e56548848ff926c613d59933',
-        clientSecret: '3c9a5b40395d451395f25e0f2008c4ee',
-    });
-
-    return state = [...spotifyApi]
-
-    }
 
 
 
