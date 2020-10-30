@@ -4,6 +4,7 @@ import { combineReducers } from "redux";
 const rootReducer = combineReducers({
     playlists: playlistReducer,
     songs: songsReducer,
+    search: searchReducer
 
   });
    
@@ -22,8 +23,14 @@ function playlistReducer(state = {loading: false }, action)  {
             }
 
       case 'ADD_PLAYLIST':
-        return state.concat({id: uuid(),
-            text: action.text}) 
+          debugger
+        return state.concat({
+            name: action.payload.data.attributes.name,
+            description:  action.payload.data.attributes.description,
+            id: action.payload.data.attributes.id
+            })
+
+
     case 'DELETE_PLAYLIST':
         const idx = state.findIndex(restaurant => restaurant.id === action.id);
         return [...state.slice(0,idx), ...state.slice(idx+1)]  
@@ -68,6 +75,14 @@ function songsReducer(state = {loading: false }, action)  {
                 state: action.results.data,
                 loading: false
             }
+        case 'ADD_TOKEN':
+            return{
+                ...state,
+                token: action.payload
+            }
+              
+      default:
+        return state;
         }
     }
 

@@ -2,20 +2,22 @@ import React from 'react'
 import SearchResults from '../components/SearchResults'
 import SearchInput from '../components/SearchInput'
 import { connect } from 'react-redux'
-import { searchSongs } from '../actions/searchSongs'
-
+import { getToken } from  '../actions/getToken'
 
 class SearchContainer extends React.Component {
 
-     componentDidMount () {
-         this.props.searchSongs()
-     }
+    componentDidMount () {
+
+        this.props.getToken()
+
+    }
+
  
     render() {
 
         return (
             <div>
-                <SearchInput searchSongs= {searchSongs}/>
+                <SearchInput token={this.props.search.token} getToken={getToken}/>
                 <SearchResults />
             </div>
         )
@@ -25,8 +27,11 @@ class SearchContainer extends React.Component {
 const mapStateToProps = state => {
     return {
         playlists: state.playlists,
+        search: state.search
 
     }
 }
 
-export default connect (mapStateToProps, { searchSongs })(SearchContainer)
+
+
+export default connect (mapStateToProps, {  getToken })(SearchContainer)
