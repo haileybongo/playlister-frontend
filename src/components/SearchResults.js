@@ -2,13 +2,25 @@ import React from 'react'
 
 class SearchResults extends React.Component {
 
-   
+   displayPlaylists = (playlists) => {
+
+       return playlists.map(playlist => <option value={playlist.id}> {playlist.attributes.name} </option>)
+   }
 
     displayResults = (results) => { 
             return results.map(result => 
-                
+                <section>
                 <iframe src={`https://open.spotify.com/embed/track/${result.id}`} width="250" height="330" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-             
+                    <form onSubmit={(event) => this.props.handleOnSubmit(event, result)}>
+                        <label>Add to Playlist</label>
+                        <select onChange={(event) => this.props.handleChange(event)}>
+                        {this.displayPlaylists(this.props.playlists.state)}
+                        </select>
+                        <input type="submit" value="Add Song!" />
+                    </form>            
+
+
+                </section>
                 )
     }
  
