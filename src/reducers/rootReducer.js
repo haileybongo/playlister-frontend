@@ -46,6 +46,11 @@ function songsReducer(state = {loading: false }, action)  {
                 state: action.songs.data,
                 loading: false
             }
+        case 'ADD_SONG':
+            return {
+                state: action.playlists.data,
+                loading: false
+            }
 
       
         case 'DELETE_REVIEW':

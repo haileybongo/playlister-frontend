@@ -12,8 +12,8 @@ class SearchResults extends React.Component {
                 <section>
                 <iframe src={`https://open.spotify.com/embed/track/${result.id}`} width="250" height="330" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                     <form onSubmit={(event) => this.props.handleOnSubmit(event, result)}>
-                        <label>Add to Playlist</label>
                         <select onChange={(event) => this.props.handleChange(event)}>
+                        <option value = "" disabled selected hidden> Choose Playlist</option>
                         {this.displayPlaylists(this.props.playlists.state)}
                         </select>
                         <input type="submit" value="Add Song!" />

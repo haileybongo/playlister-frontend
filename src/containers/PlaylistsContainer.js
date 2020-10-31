@@ -1,9 +1,8 @@
 import React from 'react'
-import Playlist from '../components/Playlist'
+import Playlists from '../components/Playlist'
 import PlaylistInput from '../components/PlaylistInput'
 import { connect } from 'react-redux'
-import { fetchPlaylists } from '../actions/fetchPlaylists'
-import { addPlaylist } from '../actions/addPlaylist'
+
 
 class PlaylistContainer extends React.Component {
  
@@ -14,7 +13,7 @@ class PlaylistContainer extends React.Component {
         return (
             <div>
                 < PlaylistInput />
-                <Playlist />
+                <Playlists playlists={this.props.playlists} />
             </div>
         )
     }
@@ -22,8 +21,9 @@ class PlaylistContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        playlists: state.playlists
+        playlists: state.playlists,
+        songs: state.songs
     }
 }
 
-export default connect (mapStateToProps, { fetchPlaylists, addPlaylist })(PlaylistContainer)
+export default connect (mapStateToProps,)(PlaylistContainer)

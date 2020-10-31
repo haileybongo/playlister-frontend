@@ -26,12 +26,12 @@ class SearchContainer extends React.Component {
         })
       }
 
-    handleOnSubmit(event, result) {
+    handleOnSubmit = (event, result) => {
         event.preventDefault();
-        debugger
+
         this.props.addSong(this.state.playlistId, result);
         this.setState({
-            playListId: ''
+            playlistId: ''
         });
       }
 
