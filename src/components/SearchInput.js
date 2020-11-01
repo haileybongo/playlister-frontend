@@ -340,6 +340,7 @@ class SearchInput extends React.Component {
 
               <input type="submit" />
             </form>
+            
           </div>
         );
       }

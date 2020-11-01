@@ -3,9 +3,9 @@ import Playlists from '../components/Playlists'
 import PlaylistInput from '../components/PlaylistInput'
 import { connect } from 'react-redux'
 import {fetchPlaylists} from '../actions/fetchPlaylists'
-import Song from '../components/Song'
 import {Route, Link} from 'react-router-dom'
 import Playlist from '../components/Playlist'
+
 
 class PlaylistContainer extends React.Component {
 
@@ -14,13 +14,11 @@ class PlaylistContainer extends React.Component {
     }
  
     render() {
-
-
-
         return (
             <div>
-                < PlaylistInput />
-                <Playlists playlists={this.props.playlists} />
+                <Route path='/playlists/new' component={PlaylistInput}/>
+                <Route path='/playlists'  render={(routerProps) => <Playlists {...routerProps} playlists={this.props.playlists} />}/>              
+                <Route path='/playlists/:id' render={(routerProps) => <Playlist {...routerProps} playlists={this.props.playlists} />}/>
             </div>
         )
     }

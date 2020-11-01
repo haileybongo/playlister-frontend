@@ -25,8 +25,6 @@ class PlaylistInput extends React.Component {
       }
  
     render() {
-
-
         return (
             <div>
                 Create New Playlist!
