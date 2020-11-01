@@ -1,10 +1,15 @@
 import React from 'react'
-import Playlists from '../components/Playlist'
+import Playlists from '../components/Playlists'
 import PlaylistInput from '../components/PlaylistInput'
 import { connect } from 'react-redux'
+import {fetchPlaylists} from '../actions/fetchPlaylists'
 
 
 class PlaylistContainer extends React.Component {
+
+    componentDidMount () {
+        this.props.fetchPlaylists()
+    }
  
     render() {
 
@@ -26,4 +31,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect (mapStateToProps,)(PlaylistContainer)
+export default connect (mapStateToProps, { fetchPlaylists })(PlaylistContainer)

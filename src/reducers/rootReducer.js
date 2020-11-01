@@ -10,26 +10,25 @@ const rootReducer = combineReducers({
    
 export default rootReducer;
 
-function playlistReducer(state = {loading: false }, action)  {
+function playlistReducer(state = [], action)  {
     switch (action.type) {
         case 'LOADING_PLAYLIST':
             return {
             state,
             loading: true}
         case 'FETCH_PLAYLISTS':
-            return {
-                state: action.playlists.data,
-                loading: false
-            }
+            return (
+                action.playlists.data
+            )
         case 'ADD_PLAYLIST':
-            return {
-                state: action.playlists.data,
-                loading: false
-            }
+            return (
+                action.playlists.data
+            )
         case 'DELETE_PLAYLIST':
             const idx = state.findIndex(playlist => playlist.id === action.id);
             return [...state.slice(0,idx), ...state.slice(idx+1)]  
-        default:
+        
+            default:
             return state;
             }
         }
@@ -42,15 +41,15 @@ function songsReducer(state = {loading: false }, action)  {
             loading: true}
         case 'FETCH_SONGS':
    
-            return {
-                state: action.songs.data,
-                loading: false
-            }
+            return (
+                action.songs.data,
+                {loading: false}
+            )
         case 'ADD_SONG':
-            return {
-                state: action.playlists.data,
-                loading: false
-            }
+            return (
+                action.playlists.data,
+                {loading: false}
+            )
 
       
         case 'DELETE_REVIEW':
