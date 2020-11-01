@@ -3,11 +3,11 @@ import React from 'react'
 
 const Song = (props) => {
  
-
+debugger
 
         return (
             <div>
-               Song
+               {props.song.song_name}
             </div>
         )
     

@@ -1,20 +1,20 @@
-import React from 'react'
+import { render } from '@testing-library/react'
 import {Route, Link} from 'react-router-dom'
-import Playlist from '../components/Playlist'
+import Playlist from './Playlist'
+import React, { Component } from 'react';
 
 
-const Playlists = (props) => {
+class Playlists extends Component {
 
-
-
+render(){
         return (
             <div>
-              {props.playlists.map(playlist => <Playlist key = {playlist.id} playlist={playlist} /> )}
+              {this.props.playlists.map(playlist => <div> <Playlist key = {playlist.id} playlist={playlist} /> </div> )}
             </div>
         )
     
+        }
 }
 
 export default Playlists
 
-//{props.playlists.map(playlist => <Playlist playlist={playlist} /> )}
