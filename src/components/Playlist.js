@@ -4,15 +4,13 @@ import Song from './Song'
 
 const Playlist = (props) => {
 
-    let playlist = props.playlists[props.match.params.id]
-    debugger
-
+    let playlist = props.playlists.filter(account => account.id == props.match.params.id)[0]
 
         return (
             <div>
-              {this.playlist.attributes.name}<br/>
-              {props.playlist.attributes.description}<br/>
-              {props.playlist.attributes.songs.map(song => <Song song = {song}/>)}
+              {playlist ? playlist.attributes.name : null}<br/>
+              {playlist ? playlist.attributes.description : null}<br/>
+             
             </div>
         )
     
@@ -20,3 +18,4 @@ const Playlist = (props) => {
 }
 
 export default Playlist
+// {props.playlist.attributes.songs.map(song => <Song song = {song}/>)}

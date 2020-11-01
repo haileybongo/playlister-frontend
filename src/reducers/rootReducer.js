@@ -12,10 +12,6 @@ export default rootReducer;
 
 function playlistReducer(state = [], action)  {
     switch (action.type) {
-        case 'LOADING_PLAYLIST':
-            return {
-            state,
-            loading: true}
         case 'FETCH_PLAYLISTS':
             return (
                 action.playlists.data
@@ -28,7 +24,7 @@ function playlistReducer(state = [], action)  {
             const idx = state.findIndex(playlist => playlist.id === action.id);
             return [...state.slice(0,idx), ...state.slice(idx+1)]  
         
-            default:
+        default:
             return state;
             }
         }
