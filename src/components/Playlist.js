@@ -1,15 +1,15 @@
 import React from 'react'
-import {Route, Link} from 'react-router-dom'
 import Song from './Song'
 
 const Playlist = (props) => {
 
-    let playlist = props.playlists.filter(account => account.id == props.match.params.id)[0]
+    let playlist = props.playlists.filter(playlist => playlist.id === props.match.params.id)[0]
 
         return (
             <div>
-              {playlist ? playlist.attributes.name : null}<br/>
-              {playlist ? playlist.attributes.description : null}<br/>
+              <h1>{playlist ? playlist.attributes.name : null}</h1>
+              {playlist ? playlist.attributes.description : null}<br/><br/>
+              {playlist ? playlist.attributes.songs.map(song => <Song song = {song}/>) : null}
              
             </div>
         )
@@ -18,4 +18,3 @@ const Playlist = (props) => {
 }
 
 export default Playlist
-// {props.playlist.attributes.songs.map(song => <Song song = {song}/>)}

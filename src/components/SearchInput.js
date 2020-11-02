@@ -146,24 +146,19 @@ class SearchInput extends React.Component {
 
       createGenres() {
         return(
-            this.state.genres.map(genre => <button value ={genre} onClick={(event) => this.handleGenres(event)} > {genre.charAt(0).toUpperCase() + genre.slice(1)}</button> )      
+            this.state.genres.map(genre => <button key={genre.index} value ={genre} onClick={(event) => this.handleGenres(event)} > {genre.charAt(0).toUpperCase() + genre.slice(1)} </button> )      
         )
     }
     
       handleGenres(event) {
         let newState = this.state.selectedGenres.concat(event.target.value)
+        event.target.style = "border-style:inset; background-color:white"
         this.setState({
           selectedGenres:  newState
         });
       }
 
       handleChange = (event) => {
-        this.setState({
-          [event.target.name]: (event.target.value / 10)
-        })
-      }
-
-      handlePopularity = (event) => {
         this.setState({
           [event.target.name]: event.target.value
         })
@@ -321,19 +316,19 @@ class SearchInput extends React.Component {
             <br/>
             <br/>
             <label> Acousticness Level(1-10) </label>
-            <input type="text" value ={this.state.acousticness} name="acousticness" onChange={(event) => this.handleChange(event)}/>
+            <input type="number" min="1" max="10" value ={this.state.acousticness} name="acousticness" onChange={(event) => this.handleChange(event)}/>
             <br/>
             <br/>
             <label> Danceability Level (1-10) </label>
-            <input type="text" value ={this.state.danceability} name="danceability" onChange={(event) => this.handleChange(event)}/>
+            <input type="number" min="1" max="10" value ={this.state.danceability} name="danceability" onChange={(event) => this.handleChange(event)}/>
             <br/>
             <br/>
             <label> Energy Level (1-10) </label>
-            <input type="text" value ={this.state.energy} name="energy" onChange={(event) => this.handleChange(event)}/>
+            <input type="number" min="1" max="10" value ={this.state.energy} name="energy" onChange={(event) => this.handleChange(event)}/>
             <br/>
             <br/>
             <label> Popularity Level (1-10) </label>
-            <input type="text" value ={this.state.popularity} name="popularity" onChange={(event) => this.handlePopularity(event)}/>
+            <input type="number" min="1" max="10" value ={this.state.popularity} name="popularity" onChange={(event) => this.handleChange(event)}/>
 
             <form onSubmit={(event) => this.handleOnSubmit(event)}>
 

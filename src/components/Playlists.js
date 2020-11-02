@@ -1,6 +1,4 @@
-import { render } from '@testing-library/react'
-import {Route, Link} from 'react-router-dom'
-import Playlist from './Playlist'
+import {Link} from 'react-router-dom'
 import React, { Component } from 'react';
 
 
@@ -9,7 +7,10 @@ class Playlists extends Component {
 render(){
         return (
             <div>
-             Playlist Links
+             {this.props.playlists.map( playlist =>
+                <div>
+                     <Link to={`/playlist/${playlist.id}`}>{playlist.attributes.name} </Link>
+                </div>)}
             </div>
         )
     

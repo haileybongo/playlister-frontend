@@ -1,26 +1,49 @@
 import React from 'react'
+//import PlaylistLink from './PlaylistLink'
+//import ReactDOM from 'react-dom';
 
 class SearchResults extends React.Component {
+
+    state = {
+        playlistId: '',
+      }
 
    displayPlaylists = (playlists) => {
 
        return playlists.map(playlist => <option value={playlist.id}> {playlist.attributes.name} </option>)
    }
 
+
+
+   handleChange = (event) => {
+    this.setState({
+      playlistId: event.target.value,
+    })
+  }
+
+handleOnSubmit = (event, result) => {
+    event.preventDefault();
+    this.props.addSong(this.state.playlistId, result);
+    //let playlist = this.props.playlists.filter(playlist => playlist.id == this.state.playlistId)[0]
+    this.setState({
+        playlistId: ''
+    });
+    debugger
+    //ReactDOM.render( document.getElementById(result.id).appendChild(< PlaylistLink playlist={playlist} />))
+
+  }
+
     displayResults = (results) => { 
-        debugger
             return results.map(result => 
-                <section>
-                <iframe src={`https://open.spotify.com/embed/track/${result.id}`} width="250" height="330" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                    <form onSubmit={(event) => this.props.handleOnSubmit(event, result)}>
-                        <select onChange={(event) => this.props.handleChange(event)}>
+                <section id={result.id}>
+                <iframe src={`https://open.spotify.com/embed/track/${result.id}`} width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    <form onSubmit={(event) => this.handleOnSubmit(event, result)}>
+                        <select onChange={(event) => this.handleChange(event)}>
                         <option value = "" disabled selected hidden> Choose Playlist</option>
                         {this.displayPlaylists(this.props.playlists)}
                         </select>
                         <input type="submit" value="Add Song!" />
-                    </form>            
-
-
+                    </form>                               
                 </section>
                 )
     }
@@ -31,6 +54,7 @@ class SearchResults extends React.Component {
         return (
             <div>
                {this.displayResults(this.props.results)}
+              
             </div>
         )}
         else {
@@ -45,5 +69,7 @@ class SearchResults extends React.Component {
 
 
 export default SearchResults
+
+// let playlist = this.props.playlists.filter(playlist => playlist.id == this.state.playlistId)[0]
 
 //<iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
