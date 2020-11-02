@@ -5,7 +5,6 @@ import { searchSongs } from '../actions/searchSongs'
 class SearchInput extends React.Component {
  
     state = {
-        value: [],
         genres: ["acoustic",
         "afrobeat",
         "alt-rock",
@@ -138,11 +137,7 @@ class SearchInput extends React.Component {
         danceability: '',
         energy: '',
         popularity: ''
-
       }
-
-
-
 
       createGenres() {
         return(
@@ -169,7 +164,6 @@ class SearchInput extends React.Component {
         event.preventDefault();
         this.props.searchSongs(this.state, this.props.token);
         this.setState({
-            value: [],
             genres: ["acoustic",
             "afrobeat",
             "alt-rock",

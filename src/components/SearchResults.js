@@ -1,5 +1,6 @@
 import React from 'react'
-//import PlaylistLink from './PlaylistLink'
+import PlaylistLink from './PlaylistLink'
+import {Link} from 'react-router-dom'
 //import ReactDOM from 'react-dom';
 
 class SearchResults extends React.Component {
@@ -23,13 +24,16 @@ class SearchResults extends React.Component {
 
 handleOnSubmit = (event, result) => {
     event.preventDefault();
+
     this.props.addSong(this.state.playlistId, result);
     //let playlist = this.props.playlists.filter(playlist => playlist.id == this.state.playlistId)[0]
     this.setState({
         playlistId: ''
     });
-    debugger
-    //ReactDOM.render( document.getElementById(result.id).appendChild(< PlaylistLink playlist={playlist} />))
+
+    setTimeout(function(){ event.target.children[1].value = "Added!"; }, 2000);
+    //setTimeout(function(){ event.target.children[1].value = "Add Song!"; }, 4000)
+    //setTimeout(function(){ event.target[0].value = "Choose Playlist"; }, 4000)
 
   }
 
