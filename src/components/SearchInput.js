@@ -141,7 +141,7 @@ class SearchInput extends React.Component {
 
       createGenres() {
         return(
-            this.state.genres.map(genre => <button key={genre.index} value ={genre} onClick={(event) => this.handleGenres(event)} > {genre.charAt(0).toUpperCase() + genre.slice(1)} </button> )      
+            this.state.genres.map(genre => <option key={genre.index} value ={genre} onChange={(event) => this.handleGenres(event)} > {genre.charAt(0).toUpperCase() + genre.slice(1)} </option>)      
         )
     }
     
@@ -304,31 +304,78 @@ class SearchInput extends React.Component {
       render() {
         return (
           <div>
-            <label> Select Genres </label>
-            <br/>
-            {this.createGenres()}
+            <span style={{position: 'absolute', left: '50%', transform: 'translate(-50%,-50%)', fontWeight: 'bold'}}> Select Genres </span>
             <br/>
             <br/>
-            <label> Acousticness Level(1-10) </label>
-            <input type="number" min="1" max="10" value ={this.state.acousticness} name="acousticness" onChange={(event) => this.handleChange(event)}/>
-            <br/>
-            <br/>
-            <label> Danceability Level (1-10) </label>
-            <input type="number" min="1" max="10" value ={this.state.danceability} name="danceability" onChange={(event) => this.handleChange(event)}/>
-            <br/>
-            <br/>
-            <label> Energy Level (1-10) </label>
-            <input type="number" min="1" max="10" value ={this.state.energy} name="energy" onChange={(event) => this.handleChange(event)}/>
-            <br/>
-            <br/>
-            <label> Popularity Level (1-10) </label>
-            <input type="number" min="1" max="10" value ={this.state.popularity} name="popularity" onChange={(event) => this.handleChange(event)}/>
 
-            <form onSubmit={(event) => this.handleOnSubmit(event)}>
+            <div class="row" >
+                    <div class="col-sm-2" ></div>
+                    <div class="col-sm-1" ></div>
+                    <div class="col-sm-2" >
+                        <select>
+                            {this.createGenres()}
+                        </select>
+                    </div>
 
+                    <div class="col-sm-2">
+                        <select>
+                            {this.createGenres()}
+                        </select>
+                    </div>
 
-              <input type="submit" />
+                    <div class="col-sm-2">
+                         <select>
+                            {this.createGenres()}
+                        </select>
+                    </div>
+                    <div class="col-sm-2" ></div>
+            </div>        
+            
+            <br/>
+            <br/>
+            <div className="slidecontainer" className="container" width="10%">
+            <label> Acousticness</label>
+
+                <div className="range-field" >
+                    <input type="range" min="0" max="10" name="Acousticness" className = "slider " onChange={(event) => this.handleChange(event)}/>
+                </div>
+
+            <br/>
+            <br/>
+            <label> Danceability  </label>
+
+                <div class="range-field">
+                    <input type="range" min="0" max="10" name="danceability" className = "slider " onChange={(event) => this.handleChange(event)}/>
+                </div>
+            
+            <br/>
+            <br/>
+            <label> Energy </label>
+
+                <div class="range-field">
+                    <input type="range" min="0" max="10" name="Energy" className = "slider " onChange={(event) => this.handleChange(event)}/>
+                </div>
+
+            <br/>
+            <br/>
+            <label> Popularity</label>
+                <div class="range-field">
+                    <input type="range" min="0" max="10" name="Popularity" className = "slider " onChange={(event) => this.handleChange(event)}/>
+                </div>
+            </div>
+            <form style={{float:'center'}}onSubmit={(event) => this.handleOnSubmit(event)}>
+            <br/>
+            <br/>
+
+              <input type="submit"   style={{background:' rgba(0,0,0,0)', padding: '10px', position: 'absolute',
+  left: '50%', transform: 'translate(-50%,-50%)'}}/>
             </form>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             
           </div>
         );
