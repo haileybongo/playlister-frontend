@@ -312,19 +312,22 @@ class SearchInput extends React.Component {
                     <div class="col-sm-2" ></div>
                     <div class="col-sm-1" ></div>
                     <div class="col-sm-2" >
-                        <select>
+                        <select onChange={(event) => this.handleGenres(event)}>
+                            <option value = "" disabled selected hidden> Genre 1</option>
                             {this.createGenres()}
                         </select>
                     </div>
 
                     <div class="col-sm-2">
-                        <select>
+                        <select onChange={(event) => this.handleGenres(event)}>
+                            <option value = "" disabled selected hidden> Genre 2</option>
                             {this.createGenres()}
                         </select>
                     </div>
 
                     <div class="col-sm-2">
-                         <select>
+                         <select onChange={(event) => this.handleGenres(event)}>
+                            <option value = "" disabled selected hidden>  Genre 3</option>
                             {this.createGenres()}
                         </select>
                     </div>
@@ -368,7 +371,7 @@ class SearchInput extends React.Component {
             <br/>
 
               <input type="submit"   style={{background:' rgba(0,0,0,0)', padding: '10px', position: 'absolute',
-  left: '50%', transform: 'translate(-50%,-50%)'}}/>
+                left: '50%', transform: 'translate(-50%,-50%)'}}/>
             </form>
             <br/>
             <br/>

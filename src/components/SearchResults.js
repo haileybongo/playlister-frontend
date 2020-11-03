@@ -38,19 +38,45 @@ handleOnSubmit = (event, result) => {
   }
 
     displayResults = (results) => { 
-            return results.map(result => 
-                <section id={result.id}>
-                <iframe src={`https://open.spotify.com/embed/track/${result.id}`} width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                    <form onSubmit={(event) => this.handleOnSubmit(event, result)}>
-                        <select onChange={(event) => this.handleChange(event)}>
+
+            return  <div class="row" >
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2" >
+                {results.map(result => 
+                <div id={result.id} >
+                     
+                <iframe src={`https://open.spotify.com/embed/track/${result.id}`} width="56%" height="90" frameborder="0" allowtransparency="true" allow="encrypted-media" ></iframe>
+
+                             
+                </div>)}
+                </div>
+            <div class="col-sm-2">
+           
+                {results.map(result => 
+                    <div className="container" >
+                       <br/>
+                       <br/>
+                    <form onSubmit={(event) => this.handleOnSubmit(event, result)} >
+                        <select onChange={(event) => this.handleChange(event)} style={{width: '200px'}}>
                         <option value = "" disabled selected hidden> Choose Playlist</option>
                         {this.displayPlaylists(this.props.playlists)}
                         </select>
-                        <input type="submit" value="Add Song!" />
-                    </form>                               
-                </section>
-                )
-    }
+                        <input type="submit" value="Add Song!" style={{backgroundColor:'rgba(0,0,0,0.0)'}}/>
+                    </form> 
+                    <br/>
+                   
+                    </div>
+                    
+                )}
+                
+            </div>
+          </div> 
+                
+
+               
+        }
+                
+
  
     render() {
 
