@@ -7,7 +7,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'YoungSerif' ,serif;
+  font-family: 'YoungSerif', 'Quicksand', serif;
   font-size: 14px;
   line-height: 1.5;
   background: linear-gradient(to right top, #ffc4ee, #ead1fc, #dadcff, #91a2bb, #a2b6c2) no-repeat center center fixed;

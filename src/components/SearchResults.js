@@ -1,7 +1,7 @@
 import React from 'react'
 import PlaylistLink from './PlaylistLink'
 import {Link} from 'react-router-dom'
-//import ReactDOM from 'react-dom';
+import Collapsible from 'react-collapsible';
 
 class SearchResults extends React.Component {
 
@@ -39,41 +39,34 @@ handleOnSubmit = (event, result) => {
 
     displayResults = (results) => { 
 
-            return  <div class="row" >
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2" >
-                {results.map(result => 
-                <div id={result.id} >
-                     
-                <iframe src={`https://open.spotify.com/embed/track/${result.id}`} width="56%" height="90" frameborder="0" allowtransparency="true" allow="encrypted-media" ></iframe>
-
-                             
-                </div>)}
-                </div>
-            <div class="col-sm-2">
-           
-                {results.map(result => 
-                    <div className="container" >
-                       <br/>
-                       <br/>
-                    <form onSubmit={(event) => this.handleOnSubmit(event, result)} >
-                        <select onChange={(event) => this.handleChange(event)} style={{width: '200px'}}>
-                        <option value = "" disabled selected hidden> Choose Playlist</option>
-                        {this.displayPlaylists(this.props.playlists)}
-                        </select>
-                        <input type="submit" value="Add Song!" style={{backgroundColor:'rgba(0,0,0,0.0)'}}/>
-                    </form> 
-                    <br/>
-                   
+            return  results.map(result =>
+                <div class="row" style={{borderBottom: '1px solid white'}}>
+                     <div class="col-sm-1" >
+                        <iframe src={`https://open.spotify.com/embed/track/${result.id}`} width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media" ></iframe>
                     </div>
-                    
-                )}
+                    <div class="col-sm-3" >
+                       <p style={{fontFamily: 'Quicksand', fontWeight:'bold', color: 'white', textAlign:'center'}}> {result.name} </p>
+                       <p style={{fontFamily: 'Quicksand', color:'white', textAlign:'center'}}>{result.artists[0].name} </p>
+                    </div>
+                    <div class="col-sm-3" >
+                        <br/>
+                        <Collapsible trigger="+">
+                        <form onSubmit={(event) => this.handleOnSubmit(event, result)} >
+                            <select onChange={(event) => this.handleChange(event)} style={{width: '200px'}}>
+                            <option value = "" disabled selected hidden> Choose Playlist</option>
+                            {this.displayPlaylists(this.props.playlists)}
+                            </select>
+                            <input type="submit" value="Add Song!" style={{backgroundColor:'rgba(0,0,0,0.0)'}}/>
+                        </form> 
+                        </Collapsible>
+                    </div>
+                    <div class="col-sm-5" >
+                    </div>
+                    </div>
+                )
                 
-            </div>
-          </div> 
-                
-
-               
+        
+             
         }
                 
 
@@ -82,7 +75,7 @@ handleOnSubmit = (event, result) => {
 
         if (this.props.results !== undefined){
         return (
-            <div>
+            <div clann="container">
                {this.displayResults(this.props.results)}
               
             </div>
@@ -99,7 +92,3 @@ handleOnSubmit = (event, result) => {
 
 
 export default SearchResults
-
-// let playlist = this.props.playlists.filter(playlist => playlist.id == this.state.playlistId)[0]
-
-//<iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
