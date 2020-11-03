@@ -22,29 +22,32 @@ class PlaylistInput extends React.Component {
           name: '',
           description: ''
         })
+        setTimeout(function(){ event.target.parentElement.innerHTML =  "Saved"; }, 1000);
       }
  
     render() {
         return (
-            <div>
-                Create New Playlist!
-                <br/>
-              
-                <form onSubmit={(event) => this.handleSubmit(event)}><br/>
-                <label> Name: </label> <br/>
-                <input type="text" value ={this.state.name} name="name" onChange={(event) => this.handleChange(event)}/>
+            <div className="container" style={{position:"relative"}}>
                 <br/>
                 <br/>
-                <label> Description: </label><br/>
-                <input type="text" value ={this.state.description} name="description" onChange={(event) => this.handleChange(event)}/>
+            <div className="playlistForm">
                 <br/>
-                <input type="submit" />
+                <label style={{fontSize: '20pt'}}>Create Playlist</label>
+                <br/>
+                <form onSubmit={(event) => this.handleSubmit(event)} style={{borders: '1px solid white'}}><br/>
+                <label style={{fontFamily: 'Quicksand'}}> Name: </label> <br/>
+                <input className= "inputForm" type="text" value ={this.state.name} name="name" onChange={(event) => this.handleChange(event)}/>
+                <br/>
+                <br/>
+                <label style={{fontFamily: 'Quicksand'}}> Description: </label><br/>
+                <input className= "inputForm" type="textarea" value ={this.state.description} name="description" onChange={(event) => this.handleChange(event)}/>
+                <br/>
+                <input type="submit" style={{fontFamily: 'Quicksand'}} value="CREATE"/>
                 </form>
                 <br/>
                 <br/>
-
-            
-            </div>
+                </div>
+                </div>
         )
     }
 }

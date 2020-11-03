@@ -6,7 +6,7 @@ import Collapsible from 'react-collapsible';
 class SearchResults extends React.Component {
 
     state = {
-        playlistId: '',
+        playlistId: ''
       }
 
    displayPlaylists = (playlists) => {
@@ -38,9 +38,10 @@ handleOnSubmit = (event, result) => {
   }
 
     displayResults = (results) => { 
-
+ 
             return  results.map(result =>
                 <div class="row" style={{borderBottom: '1px solid white'}}>
+
                      <div class="col-sm-1" >
                         <iframe src={`https://open.spotify.com/embed/track/${result.id}`} width="80" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media" ></iframe>
                     </div>
@@ -50,7 +51,7 @@ handleOnSubmit = (event, result) => {
                     </div>
                     <div class="col-sm-3" >
                         <br/>
-                        <Collapsible trigger="+">
+                        <Collapsible trigger="+" class="Collapsible">
                         <form onSubmit={(event) => this.handleOnSubmit(event, result)} >
                             <select onChange={(event) => this.handleChange(event)} style={{width: '200px'}}>
                             <option value = "" disabled selected hidden> Choose Playlist</option>
@@ -60,9 +61,10 @@ handleOnSubmit = (event, result) => {
                         </form> 
                         </Collapsible>
                     </div>
-                    <div class="col-sm-5" >
+                    <div class="col-sm-4" >
                     </div>
                     </div>
+                    
                 )
                 
         
@@ -72,17 +74,17 @@ handleOnSubmit = (event, result) => {
 
  
     render() {
-
         if (this.props.results !== undefined){
         return (
-            <div clann="container">
+            <div class="container" id="resultsContainer" >
+
                {this.displayResults(this.props.results)}
-              
+
             </div>
         )}
         else {
             return(
-                <div>
+                <div id="resultsContainer">
 
                 </div>
         )

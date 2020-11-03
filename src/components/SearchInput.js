@@ -162,6 +162,7 @@ class SearchInput extends React.Component {
     
       handleOnSubmit(event) {
         event.preventDefault();
+        debugger
         this.props.searchSongs(this.state, this.props.token);
         this.setState({
             genres: ["acoustic",
