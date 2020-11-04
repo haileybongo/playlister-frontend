@@ -7,8 +7,8 @@ const Playlist = (props) => {
 
         return (
             <div>
-              <h1>{playlist ? playlist.attributes.name : null}</h1>
-              {playlist ? playlist.attributes.description : null}<br/><br/>
+              <h1 style={{fontWeight:'bold', color: 'white', textAlign:'center', fontSize:'30pt'}}>{playlist ? playlist.attributes.name : null}</h1>
+              {playlist ? <p style={{fontFamily:'Quicksand', fontWeight:'bold', color: 'white', textAlign:'center', fontSize:'20pt'}}> {playlist.attributes.description}</p> : null}<br/><br/>
               {playlist ? playlist.attributes.songs.map(song => <Song song = {song}/>) : null}
              
             </div>

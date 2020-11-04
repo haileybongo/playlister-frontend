@@ -1,5 +1,5 @@
 import React from 'react'
-import PlaylistLink from './PlaylistLink'
+import PlaylistLink from './saved/PlaylistLink'
 import {Link} from 'react-router-dom'
 import Collapsible from 'react-collapsible';
 

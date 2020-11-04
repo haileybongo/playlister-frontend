@@ -119,3 +119,12 @@ body {
   outline: none;
   color: rgba(0,0,0,1)
 }
+
+.playlistTiles {
+  display: grid;
+  grid-column-gap: 30px;
+  grid-auto-rows: 250px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+}
+
