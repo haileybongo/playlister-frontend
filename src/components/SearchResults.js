@@ -1,6 +1,4 @@
 import React from 'react'
-import PlaylistLink from './saved/PlaylistLink'
-import {Link} from 'react-router-dom'
 import Collapsible from 'react-collapsible';
 
 class SearchResults extends React.Component {
@@ -26,14 +24,11 @@ handleOnSubmit = (event, result) => {
     event.preventDefault();
 
     this.props.addSong(this.state.playlistId, result);
-    //let playlist = this.props.playlists.filter(playlist => playlist.id == this.state.playlistId)[0]
     this.setState({
         playlistId: ''
     });
 
-    setTimeout(function(){ event.target.children[1].value = "Added!"; }, 2000);
-    //setTimeout(function(){ event.target.children[1].value = "Add Song!"; }, 4000)
-    //setTimeout(function(){ event.target[0].value = "Choose Playlist"; }, 4000)
+    setTimeout(function(){ event.target.children[1].value = "Added!"; }, 2000)
 
   }
 

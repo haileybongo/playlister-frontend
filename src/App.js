@@ -1,6 +1,5 @@
 import React from 'react';
 import PlaylistsContainer from './containers/PlaylistsContainer'
-import SongsContainer from './containers/SongsContainer'
 import SearchContainer from './containers/SearchContainer'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
