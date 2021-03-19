@@ -6,7 +6,7 @@ export const deleteSong = (playlist, song) => {
          playlist_id: playlist.id
      }
      
-     debugger
+     
      return (dispatch) => {
        fetch('http://localhost:3000/api/songs/' + `${song.id}`, {
         headers: {
@@ -17,7 +17,7 @@ export const deleteSong = (playlist, song) => {
          body: JSON.stringify(data)
        })
        .then(response => response.json())
-       .then(data => dispatch({type: 'ADD_PLAYLIST', playlists: data}) )
+       .then(data => dispatch({type: 'FETCH_PLAYLIST', playlists: data}) )
      }
    
    }

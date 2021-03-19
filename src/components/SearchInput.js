@@ -341,7 +341,7 @@ class SearchInput extends React.Component {
             <label> Acousticness</label>
 
                 <div className="range-field" >
-                    <input type="range" min="0" max="10" name="Acousticness" className = "slider " onChange={(event) => this.handleChange(event)}/>
+                    <input type="range" max="10" min="0" name="acousticness" step="1" className = "slider " onChange={(event) => this.handleChange(event)}/>
                 </div>
 
             <br/>
@@ -357,14 +357,14 @@ class SearchInput extends React.Component {
             <label> Energy </label>
 
                 <div class="range-field">
-                    <input type="range" min="0" max="10" name="Energy" className = "slider " onChange={(event) => this.handleChange(event)}/>
+                    <input type="range" min="0" max="10" name="energy" className = "slider " onChange={(event) => this.handleChange(event)}/>
                 </div>
 
             <br/>
             <br/>
             <label> Popularity</label>
                 <div class="range-field">
-                    <input type="range" min="0" max="10" name="Popularity" className = "slider " onChange={(event) => this.handleChange(event)}/>
+                    <input type="range" min="0" max="10" name="popularity" className = "slider " onChange={(event) => this.handleChange(event)}/>
                 </div>
             </div>
             <form style={{float:'center'}}onSubmit={(event) => this.handleOnSubmit(event)}>

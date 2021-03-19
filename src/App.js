@@ -5,6 +5,7 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import {Route,} from 'react-router-dom'
 
+
 class App extends React.Component {
 
 
