@@ -23,4 +23,3 @@ render(){
 
 export default Playlists
 
-// {this.props.playlists.map(playlist => <div> <Playlist key = {playlist.id} playlist={playlist} /> </div> )}

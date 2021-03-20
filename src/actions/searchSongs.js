@@ -46,14 +46,3 @@ export const searchSongs = (data= {}, token) =>{
     }
 }
 
-
-
-
-// "https://api.spotify.com/v1/recommendations?market=US&seed_genres=" + data.selectedGenres + "&target_acousticness=" + data.acousticness + 
-//       "&target_danceability=" + data.danceability + "&target_energy=" + data.energy + "&target_popularity=" + data.popularity
-
-// let genres = data.selectedGenres
-// let acousticness = "0.5"
-// let danceability = "0.4"
-// let energy = "0.5"
-// let popularity = "70"

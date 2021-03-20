@@ -18,7 +18,7 @@ class SearchContainer extends React.Component {
         return (
             <div>
               
-                <Route path='/search/new' render={() => <SearchInput token={this.props.search.token} getToken={getToken}/>}/>
+                <Route path='/search/new' render={() => <SearchInput token={this.props.search.token} getToken={getToken} genres={this.props.genres}/>}/>
                 <Route path='/search/new' render={() =><SearchResults results={this.props.search.results} playlists={this.props.playlists} addSong={this.props.addSong}/>}/>                          
                 
             </div>
@@ -29,7 +29,8 @@ class SearchContainer extends React.Component {
 const mapStateToProps = state => {
     return {
         playlists: state.playlists,
-        search: state.search
+        search: state.search,
+        genres: state.genres
 
     }
 }
