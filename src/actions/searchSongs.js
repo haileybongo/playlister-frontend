@@ -6,32 +6,22 @@ export const searchSongs = (data= {}, token) =>{
     let url = "https://api.spotify.com/v1/recommendations?market=US&seed_genres=" + data.selectedGenres
     
     if(data.acousticness !== ''){
-        let acousticness
-        if (data.acousticness < 10 ){
-         acousticness = data.acousticness / 10 }
-         else {acousticness = data.acousticness}
-        url = url.concat("&target_acousticness=" + acousticness)
+        url = url.concat("&target_acousticness=" + data.acousticness / 10)
     }
 
-    if(data.danceability !== ''){
-        let danceability
-        if (data.danceability < 10 ){
-            danceability = data.danceability / 10 }
-         else {danceability = data.danceability}
-        url = url.concat("&target_danceability=" + danceability)
+    if(data.danceability !== ''){ 
+        url = url.concat("&target_danceability=" + data.danceability / 10)
     }
 
     if(data.energy !== ''){
-        let energy
-        if (data.energy < 10 ){
-            energy = data.energy / 10 }
-         else {energy = data.energy}
-        url = url.concat("&target_energy=" + energy)
+        url = url.concat("&target_energy=" + data.energy / 10)
     }
 
     if(data.popularity !== ''){
         url = url.concat("&target_popularity=" + data.popularity)
     }
+
+    debugger
 
 
       fetch(url, {

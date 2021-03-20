@@ -7,10 +7,10 @@ class SearchInput extends React.Component {
     state = {
         genres: this.props.genres,
         selectedGenres: [],
-        acousticness: '',
-        danceability: '',
-        energy: '',
-        popularity: ''
+        acousticness: '5',
+        danceability: '5',
+        energy: '5',
+        popularity: '5'
       }
 
       createGenres() {
@@ -41,10 +41,10 @@ class SearchInput extends React.Component {
         this.setState({
             genres: this.props.genres,
             selectedGenres: [],
-            acousticness: '',
-            danceability: '',
-            energy: '',
-            popularity: ''
+            acousticness: '5',
+            danceability: '5',
+            energy: '5',
+            popularity: '5'
         });
       }
 
@@ -89,7 +89,7 @@ class SearchInput extends React.Component {
             <label> Acousticness</label>
 
                 <div className="range-field" >
-                    <input type="range" max="10" min="0" name="acousticness" step="1" className = "slider " onChange={(event) => this.handleChange(event)}/>
+                    <input type="range" min="0" max="10" name="acousticness" step="1" className = "slider" value={this.state.acousticness} onChange={(event) => this.handleChange(event)}/>
                 </div>
 
             <br/>
@@ -97,7 +97,7 @@ class SearchInput extends React.Component {
             <label> Danceability  </label>
 
                 <div class="range-field">
-                    <input type="range" min="0" max="10" name="danceability" className = "slider " onChange={(event) => this.handleChange(event)}/>
+                    <input type="range" min="0" max="10" name="danceability" className = "slider" value={this.state.danceability} onChange={(event) => this.handleChange(event)}/>
                 </div>
             
             <br/>
@@ -105,14 +105,14 @@ class SearchInput extends React.Component {
             <label> Energy </label>
 
                 <div class="range-field">
-                    <input type="range" min="0" max="10" name="energy" className = "slider " onChange={(event) => this.handleChange(event)}/>
+                    <input type="range" min="0" max="10" name="energy" className = "slider" value={this.state.energy} onChange={(event) => this.handleChange(event)}/>
                 </div>
 
             <br/>
             <br/>
             <label> Popularity</label>
                 <div class="range-field">
-                    <input type="range" min="0" max="10" name="popularity" className = "slider " onChange={(event) => this.handleChange(event)}/>
+                    <input type="range" min="0" max="10" name="popularity" className = "slider" value={this.state.popularity} onChange={(event) => this.handleChange(event)}/>
                 </div>
             </div>
             <form style={{float:'center'}}onSubmit={(event) => this.handleOnSubmit(event)}>
