@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Collapsible from 'react-collapsible';
 
 class SearchResults extends React.Component {

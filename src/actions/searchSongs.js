@@ -1,5 +1,7 @@
 export const searchSongs = (data= {}, token) =>{
 
+  debugger
+
     return (dispatch) => {
       dispatch({type: 'LOADING_RESULTS'})
 
