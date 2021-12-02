@@ -21,6 +21,7 @@ export const getToken = () => {
         request.post(authOptions, function(error, response, body) {
             
         if (!error && response.statusCode === 200) {
+            debugger
             dispatch({type: 'ADD_TOKEN', payload: body.access_token})
         }
     })

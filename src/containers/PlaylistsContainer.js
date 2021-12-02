@@ -1,36 +1,33 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Playlists from '../components/Playlists'
 import PlaylistInput from '../components/PlaylistInput'
-import { connect } from 'react-redux'
 import {fetchPlaylists} from '../actions/fetchPlaylists'
 import {Route, Switch} from 'react-router-dom'
 import Playlist from '../components/Playlist'
+import { useDispatch, useSelector } from 'react-redux'
 
 
-class PlaylistContainer extends React.Component {
+function PlaylistContainer (){
 
-    componentDidMount () {
-        this.props.fetchPlaylists()
-    }
- 
-    render() {
+    const dispatch = useDispatch()
+
+    const playlists = useSelector(state => state.playlists);
+
+    useEffect(() => {
+        dispatch(fetchPlaylists())
+
+    })
+
         return (
             <div>
                 <Switch>
                     <Route path='/playlists/new' component={PlaylistInput}/>                
-                    <Route path='/playlist/:id' render={(routerProps) => <Playlist {...routerProps} playlists={this.props.playlists} />}/>
-                    <Route path='/playlists'  render={(routerProps) => <Playlists {...routerProps} playlists={this.props.playlists} />}/>              
+                    <Route path='/playlist/:id' render={(routerProps) => <Playlist {...routerProps} playlists={playlists} />}/>
+                    <Route path='/playlists'  render={(routerProps) => <Playlists {...routerProps} playlists={playlists} />}/>              
                 </Switch>
             </div>
         )
-    }
+
 }
 
-const mapStateToProps = state => {
-    return {
-        playlists: state.playlists,
-        songs: state.songs
-    }
-}
-
-export default connect (mapStateToProps, { fetchPlaylists })(PlaylistContainer)
+export default PlaylistContainer

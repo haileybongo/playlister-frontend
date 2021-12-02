@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addPlaylist } from '../actions/addPlaylist'
 import { useDispatch } from 'react-redux'
 
-function PlaylistInput(props){
+function PlaylistInput(){
 
       const dispatch = useDispatch()
 

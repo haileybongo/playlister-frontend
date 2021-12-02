@@ -4,15 +4,6 @@ import { searchSongs } from '../actions/searchSongs'
 
 function SearchInput(props){
  
-    // state = {
-    //     genres: this.props.genres,
-    //     selectedGenres: [],
-    //     acousticness: '5',
-    //     danceability: '5',
-    //     energy: '5',
-    //     popularity: '5'
-    //   }
-
       const dispatch = useDispatch()
 
       const [genres] = useState(props.genres);
@@ -41,13 +32,6 @@ function SearchInput(props){
         event.target.style = "border-style:inset; background-color:white"
         setGenres(newState)
       }
-
-      //  const handleChange = (event) => {
-      //   this.setState({
-      //     [event.target.name]: event.target.value
-      //   })
-      // }
-    
     
       const handleOnSubmit =(event) =>  {
         event.preventDefault();
@@ -59,14 +43,6 @@ function SearchInput(props){
         setDanceability('5')
         setEnergy('5')
         setPopularity('5')
-        // this.setState({
-        //     genres: this.props.genres,
-        //     selectedGenres: [],
-        //     acousticness: '5',
-        //     danceability: '5',
-        //     energy: '5',
-        //     popularity: '5'
-        // });
       }
 
 

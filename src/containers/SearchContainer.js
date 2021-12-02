@@ -1,40 +1,33 @@
-import React from 'react'
+import React, {useEffect}  from 'react'
 import SearchResults from '../components/SearchResults'
 import SearchInput from '../components/SearchInput'
-import { connect } from 'react-redux'
 import { getToken } from  '../actions/getToken'
 import { addSong } from '../actions/addSong'
 import {Route,} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
+function SearchContainer (){
 
-class SearchContainer extends React.Component {
+    const dispatch = useDispatch()
 
-    componentDidMount () {
-        this.props.getToken()
-    }
- 
-    render() {
+    const state = useSelector(state => state);
+
+    useEffect(() => {
+        dispatch(getToken())
+
+    }, []);
+
           
         return (
             <div>
               
-                <Route path='/search/new' render={() => <SearchInput token={this.props.search.token} getToken={getToken} genres={this.props.genres}/>}/>
-                <Route path='/search/new' render={() =><SearchResults results={this.props.search.results} playlists={this.props.playlists} addSong={this.props.addSong}/>}/>                          
+                <Route path='/search/new' render={() => <SearchInput token={state.search.token} getToken={getToken} genres={state.genres}/>}/>
+                <Route path='/search/new' render={() =><SearchResults results={state.search.results} playlists={state.playlists} addSong={addSong}/>}/>                          
                 
             </div>
         )
     }
-}
-
-const mapStateToProps = state => {
-    return {
-        playlists: state.playlists,
-        search: state.search,
-        genres: state.genres
-
-    }
-}
 
 
 
-export default connect (mapStateToProps, {  getToken, addSong })(SearchContainer)
+export default SearchContainer

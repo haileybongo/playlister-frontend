@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import Collapsible from 'react-collapsible';
+import { addSong } from '../actions/addSong'
+import { useDispatch} from 'react-redux'
 
 function SearchResults (props){
 
     const [playlistId, setPlaylistId] = useState('')
-
+    const dispatch = useDispatch()
 
     const displayPlaylists = (playlists) => {
 
@@ -20,7 +22,7 @@ function SearchResults (props){
     const handleOnSubmit = (event, result) => {
     event.preventDefault();
 
-    props.addSong(playlistId, result);
+    dispatch(addSong(playlistId, result));
     setPlaylistId('')
 
     setTimeout(function(){ event.target.children[1].value = "Added!"; }, 2000)
