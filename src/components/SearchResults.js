@@ -1,38 +1,33 @@
 import React, {useState} from 'react'
 import Collapsible from 'react-collapsible';
 
-class SearchResults extends React.Component {
+function SearchResults (props){
 
-    state = {
-        playlistId: ''
-      }
+    const [playlistId, setPlaylistId] = useState('')
 
-   displayPlaylists = (playlists) => {
+
+    const displayPlaylists = (playlists) => {
 
        return playlists.map(playlist => <option value={playlist.id}> {playlist.attributes.name} </option>)
    }
 
 
 
-   handleChange = (event) => {
-    this.setState({
-      playlistId: event.target.value,
-    })
+   const handleChange = (event) => {
+      setPlaylistId(event.target.value)    
   }
 
-handleOnSubmit = (event, result) => {
+    const handleOnSubmit = (event, result) => {
     event.preventDefault();
 
-    this.props.addSong(this.state.playlistId, result);
-    this.setState({
-        playlistId: ''
-    });
+    props.addSong(playlistId, result);
+    setPlaylistId('')
 
     setTimeout(function(){ event.target.children[1].value = "Added!"; }, 2000)
 
   }
 
-    displayResults = (results) => { 
+    const displayResults = (results) => { 
  
             return  results.map(result =>
                 <div class="row" style={{borderBottom: '1px solid white'}}>
@@ -47,10 +42,10 @@ handleOnSubmit = (event, result) => {
                     <div class="col-sm-3" >
                         <br/>
                         <Collapsible trigger="+" class="Collapsible">
-                        <form onSubmit={(event) => this.handleOnSubmit(event, result)} >
-                            <select onChange={(event) => this.handleChange(event)} style={{width: '200px'}}>
+                        <form onSubmit={(event) => handleOnSubmit(event, result)} >
+                            <select onChange={(event) => handleChange(event)} style={{width: '200px'}}>
                             <option value = "" disabled selected hidden> Choose Playlist</option>
-                            {this.displayPlaylists(this.props.playlists)}
+                            {displayPlaylists(props.playlists)}
                             </select>
                             <input type="submit" value="Add Song!" style={{backgroundColor:'rgba(0,0,0,0.0)'}}/>
                         </form> 
@@ -68,12 +63,11 @@ handleOnSubmit = (event, result) => {
                 
 
  
-    render() {
-        if (this.props.results !== undefined){
+        if (props.results !== undefined){
         return (
             <div class="container" id="resultsContainer" >
 
-               {this.displayResults(this.props.results)}
+               {displayResults(props.results)}
 
             </div>
         )}
@@ -85,7 +79,7 @@ handleOnSubmit = (event, result) => {
         )
     }
 }
-}
+
 
 
 export default SearchResults

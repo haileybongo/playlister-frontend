@@ -1,31 +1,31 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { connect } from 'react-redux'
 import { addPlaylist } from '../actions/addPlaylist'
+import { useDispatch } from 'react-redux'
 
-class PlaylistInput extends React.Component {
+function PlaylistInput(props){
 
-    state = {
-        name: '',
-        description: ''
+      const dispatch = useDispatch()
+
+       const [name, setName] = useState ('')
+       const [description, setDescription] = useState ('')
+
+       const state = {
+        name: name,
+        description: description
       }
     
-      handleChange = (event) => {
-        this.setState({
-          [event.target.name]: event.target.value
-        })
-      }
     
-      handleSubmit = (event) => {
+      const handleSubmit = (event) => {
         event.preventDefault()
-        this.props.addPlaylist(this.state)
-        this.setState({
-          name: '',
-          description: ''
-        })
+        dispatch(addPlaylist(state))
+        setName('')
+        setDescription('')
+        
         setTimeout(function(){ event.target.parentElement.innerHTML =  "Saved"; }, 1000);
       }
  
-    render() {
+
         return (
             <div className="container" style={{position:"relative"}}>
                 <br/>
@@ -34,13 +34,13 @@ class PlaylistInput extends React.Component {
                 <br/>
                 <label style={{fontSize: '20pt'}}>Create Playlist</label>
                 <br/>
-                <form onSubmit={(event) => this.handleSubmit(event)} style={{borders: '1px solid white'}}><br/>
+                <form onSubmit={(event) => handleSubmit(event)} style={{borders: '1px solid white'}}><br/>
                 <label style={{fontFamily: 'Quicksand'}}> Name: </label> <br/>
-                <input className= "inputForm" type="text" value ={this.state.name} name="name" onChange={(event) => this.handleChange(event)}/>
+                <input className= "inputForm" type="text" value ={name} name="name" onChange={(event) => setName(event.target.value)}/>
                 <br/>
                 <br/>
                 <label style={{fontFamily: 'Quicksand'}}> Description: </label><br/>
-                <input className= "inputForm" type="textarea" value ={this.state.description} name="description" onChange={(event) => this.handleChange(event)}/>
+                <input className= "inputForm" type="textarea" value ={description} name="description" onChange={(event) => setDescription(event.target.value)}/>
                 <br/>
                 <input type="submit" style={{fontFamily: 'Quicksand'}} value="CREATE"/>
                 </form>
@@ -49,7 +49,6 @@ class PlaylistInput extends React.Component {
                 </div>
                 </div>
         )
-    }
 }
 
-export default connect(null, {addPlaylist})(PlaylistInput)
+export default PlaylistInput

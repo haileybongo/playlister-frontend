@@ -17,7 +17,7 @@ export const deleteSong = (playlist, song) => {
          body: JSON.stringify(data)
        })
        .then(response => response.json())
-       .then(data => dispatch({type: 'FETCH_PLAYLIST', playlists: data}) )
+       .then(data => dispatch({type: 'FETCH_PLAYLISTS', playlists: data}) )
      }
    
    }
