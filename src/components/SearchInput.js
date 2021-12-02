@@ -13,13 +13,6 @@ function SearchInput(props){
       const [energy, setEnergy] = useState ('5');
       const [popularity, setPopularity] = useState ('5');
 
-      let state =  {
-            selectedGenres: selectedGenres,
-            acousticness: acousticness,
-            danceability: danceability,
-            energy: energy,
-            popularity: popularity
-          }
 
       function createGenres() {
         return(
@@ -36,7 +29,14 @@ function SearchInput(props){
       const handleOnSubmit =(event) =>  {
         event.preventDefault();
 
-        dispatch(searchSongs(state, props.token))
+        dispatch(searchSongs({
+            selectedGenres: selectedGenres,
+            acousticness: acousticness,
+            danceability: danceability,
+            energy: energy,
+            popularity: popularity
+        }, 
+        props.token))
 
         setGenres([])
         setAcousticness('5')

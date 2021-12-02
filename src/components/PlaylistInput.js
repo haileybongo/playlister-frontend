@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import { connect } from 'react-redux'
 import { addPlaylist } from '../actions/addPlaylist'
 import { useDispatch } from 'react-redux'
 
@@ -10,15 +9,13 @@ function PlaylistInput(){
        const [name, setName] = useState ('')
        const [description, setDescription] = useState ('')
 
-       const state = {
-        name: name,
-        description: description
-      }
-    
     
       const handleSubmit = (event) => {
         event.preventDefault()
-        dispatch(addPlaylist(state))
+        dispatch(addPlaylist({
+          name: name,
+          description: description
+        }))
         setName('')
         setDescription('')
         
